@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>for优化</title>
+</head>
+
+<body>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <p class="btn">add</p>
+    <script>
+        var aBtns = document.getElementsByClassName('btn')
+        for (let i = 0; i < aBtns.length; i++) {
+            console.log(aBtns[i]);
+        }
+
+        for (let i = 0, len = aBtns.length; i < len; i++) {
+            console.log(aBtns[i]);
+        }
+    </script>
+</body>
+
+</html>

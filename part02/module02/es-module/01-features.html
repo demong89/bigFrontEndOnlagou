@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ES module 特性</title>
+</head>
+
+<body>
+    <!-- 通过给script标签添加 type=module的属性，就可以 以ES module的标准执行其中的JS代码 -->
+    <script type="module">
+        // console.log('ES module');
+        // 1、ES module 自动采用严格模式，忽略'use strict'
+        console.log(this);
+    </script>
+    <!-- <script type="module">
+        // 2、每个ES module 都是运行在单独的私有作用域中
+        var foo = '234'
+        console.log(foo);
+    </script>
+    <script type="module">
+        console.log(foo);
+    </script>
+    <script type="module" src="https://libs.baidu.com/jquery/2.0.0/jquery.min.js">
+        //  3、ES module是通过CORS的方式请求外部JS模块的 这个链接不支持CORS
+    </script>
+    <script type="module" src="https://unpkg.con/jquery@3.4.1/dist/jquery.min.js">
+        //  3、ES module是通过CORS的方式请求外部JS模块的 这个链接支持CORS
+    </script>
+    <script type="module">
+        // 4、ES module的script标签会延迟执行脚本  相当于defer属性
+        console.log(foo);
+    </script> -->
+    <!-- <script src="demo.js"></script> -->
+    <script type="module" src="demo.js"></script>
+    <p>需要显示的内容1123</p>
+</body>
+
+</html>

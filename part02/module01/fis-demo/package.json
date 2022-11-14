@@ -1,0 +1,19 @@
+{
+  "name": "fis-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.0.0-0",
+    "@babel/preset-env": "^7.10.3",
+    "@babel/preset-flow": "^7.10.1",
+    "fis-parser-babel-6.x": "^6.24.1",
+    "fis-parser-node-sass": "^1.0.7",
+    "fis3": "^3.4.44"
+  }
+}

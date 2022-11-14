@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // // 案例代码
+    //   const man = {
+    //     name:'jscoder',
+    //     age:22
+    //   }
+    //   //补全代码
+    //   const proxy = new Proxy(man, {
+    //     get(obj,key){
+    //       if(obj[key]){
+    //         console.log( obj[key]);
+    //         return obj[key]
+    //       }else{
+    //         throw new Error(`Property "${key}" does not exist`)
+    //       }
+    //     },
+    //     set(){}
+    //   })
+    //   proxy.name  // "jscoder"
+    //   proxy.age   // 22
+    //   proxy.location  // Property "$(property)" does not exist
+
+//     // 红灯三秒亮一次, 绿灯一秒亮一次, 黄灯2秒亮一次
+//     function red () {
+//       console.log('red') // 3S
+//     }
+//     function green () {
+//       console.log('green') // 1S
+//     }
+//     function yellow () {
+//       console.log('yellow') //2S
+//     }
+// function sleep(time) {
+//   return new Promise((resolve,reject)=>{
+//     setTimeout(resolve,time)
+//   })
+// }
+// async function changeColor(dur) {
+//   await sleep(dur)
+// }
+
+// async function main(){
+//   while (true) {
+//     await changeColor(3000,yellow());
+//     await changeColor(1000,red())
+//     await changeColor(2000,green())
+//   }
+// }
+// main()
+
+// var User = {
+//    count:1,
+//    action:{
+//    getCount:function () {
+//      console.log(this);
+//      return this.count
+//      }
+//    },
+// }
+// User.ff()
+// // var getCount = User.action.getCount;
+// // setTimeout(() => {
+
+// //   console.log("result 1",User.action.getCount())
+// // })
+// // console.log("result 2",getCount())
+
+    console.log('1111');
+    new Promise((resolve, reject)=>{
+      console.log('2222');
+    })
+    console.log('3333')
+          
+  </script>
+</body>
+</html>

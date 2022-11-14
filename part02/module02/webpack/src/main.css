@@ -1,0 +1,5 @@
+@import url(reset.css);
+body{
+    background-color: rebeccapurple;
+    background-image: url('./1.png');
+}

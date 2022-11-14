@@ -1,0 +1,55 @@
+<template>
+  <div>
+    <label>{{label}}</label>
+    <div>
+      <slot></slot>
+      <p v-if="errMessage">{{errMessage}}</p>
+    </div>
+  </div>
+</template>
+
+<script>
+import AsyncValidate from 'async-validator'
+export default {
+  name:'lgFormItem',
+  inject:['form'],
+  props:{
+    label:{
+      type:String
+    },
+    prop:{
+       type:String
+    }
+  },
+  mounted(){
+    this.$on('validate',()=>{
+      this.validate()
+    })
+  },
+  data(){
+    return {
+      errMessage:''
+    }
+  },
+  methods:{
+    validate(){
+      if(!this.prop) return
+      const value = this.form.model[this.prop]
+      const rules = this.form.rules[this.prop]
+      const descriptor = {[this.prop]:rules}
+      const validate = new AsyncValidate(descriptor)
+      return validate.validate({[this.prop]:value},errors =>{
+        if(errors){
+          this.errMessage = errors[0].message
+        }else{
+          this.errMessage = ''
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style>
+
+</style>

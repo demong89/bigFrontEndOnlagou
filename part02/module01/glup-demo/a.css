@@ -1,0 +1,10 @@
+body{
+    background-color: aliceblue;
+    color: #000;
+    padding: 20px;
+}
+/* 注释 */
+
+div{
+    display: inline;
+}

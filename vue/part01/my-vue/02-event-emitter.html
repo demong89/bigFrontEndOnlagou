@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        class EventEmitter {
+            constructor() {
+                this.subs = Object.create(null)
+            }
+            // 注册时间
+            $on(eventName, handler) {
+                this.subs[eventName] = this.subs[eventName] || []
+                this.subs[eventName].push(handler)
+            }
+            // 触发
+            $emit(eventName) {
+                if (this.subs[eventName]) {
+                    this.subs[eventName].forEach(handler => {
+                        handler()
+                    })
+                }
+            }
+        }
+        let em = new EventEmitter();
+        em.$on('click', () => {
+            console.log('click1');
+        })
+        em.$on('click', () => {
+            console.log('click2');
+        })
+        em.$emit('click')
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+</head>
+
+<body>
+  <div id="app">123</div>
+  <script>
+    const data = [{
+      id: 'node1',
+      type: 'div',
+      className: 'section1',
+      children: [{
+        id: 'node2',
+        type: 'div',
+        className: 'text',
+        children: [{
+          id: 'node3',
+          type: 'span',
+          content: '说明文字',
+          onClick: () => {
+            console.log(123)
+          }
+        }, {
+          id: 'node4',
+          type: 'i',
+          className: 'icon-font-example'
+        }]
+      }]
+    }, {
+      id: 'node5',
+      type: 'div',
+      className: 'section1',
+      children: [{
+        id: 'node6',
+        type: 'input',
+        className: 'custom-input'
+      }]
+    }]
+
+    // result
+    {/* <div id="node1" class="section1">
+    <div id="node2" class="text">
+        <span id="node3">说明文字</span>
+        <i id="node4" class="icon-font-example"></i>
+    </div>
+</div>
+<div id="node5" class="section2">
+    <input id="node6" class="custom-input" />
+</div> */}
+
+
+   
+
+    moveNode(data,'node3','node5')
+    // 简单实现
+    function moveNode(data, source, target) {
+      const newData= Object.assign(data);
+      // 第一步 原数据中找到目标节点 在原数据中删除
+      const findSourceData = findSource(newData,'node1',res=null)
+      // 第二步 将第一步的返回 插入到目标节点的children中
+      insertSource(newData,target,findSourceData)
+      return newData;
+    }
+    function findSource(sourceData,source,res){
+      for (let i = 0; i < sourceData.length; i++) {
+        if(sourceData[i].id === source){
+          res = sourceData[i]
+          sourceData.splice(i,1)
+          // console.log(d);
+          return res
+        }
+        if (sourceData[i].children) {
+          // console.log(findSource(d[i].children,source,res));
+          return findSource(sourceData[i].children,source,res)
+        }
+        
+      }
+    }
+    function insertSource(data,target,insertData){
+      data.forEach(item=>{
+        if(item.id === target){
+          if(item.children&&item.children.length>0){
+            item.children.push(insertData)
+          }else{
+            item.children = [insertData]
+          }
+        }
+      })
+    }
+    // console.log(data);
+
+
+    function renderTree(data) {
+      let tree;
+      tree = analysis(data)
+      return tree;
+    }
+    //  思路： 根据输入数据 type 生成标签 
+    const analysis = (arr) => {
+      const res = arr.map(item => {
+        let id = '', className = '';
+        // 标签类型 必须要有的
+        if (!item.type) throw new Error('no Types')
+        if (item.id) id = `id="${item.id}"`
+        if (item.className) className = `class="${item.className}"`
+        // 如果有子元素 递归处理
+        if (item.children) {
+          return `<${item.type} ${id} ${className}>${analysis(item.children)}</${item.type}>`
+        }
+        // 这里没有处理单标签的情况 另外content与children是否互斥 也没有处理 
+        return `<${item.type} ${id} ${className}>${item.content ? item.content : ''}</${item.type}>`
+      })
+      return res.join('')
+    }
+    const app = document.getElementById('app')
+    let renderData = renderTree(data)
+    // console.log(renderData, app);
+    app.innerHTML = renderData
+  </script>
+</body>
+
+</html>
